@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoldRate.MainPage"
+             xmlns:viewmodels="clr-namespace:GoldRate.Models"
+             x:DataType="viewmodels:MainViewModel">
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <VerticalStackLayout>
+                <WebView x:Name="webview" Source="" IsVisible="Hidden"/>
+                <Border Stroke="Black">
+                    <Grid BackgroundColor="Black" RowSpacing="1" ColumnSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Gold Pure Us$ :" Grid.Column="0" Grid.Row="0" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding OnzPrice}" Grid.Column="1" Grid.Row="0" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="24K ( 999 ) :" Grid.Column="0" Grid.Row="1" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding TnPrice}" Grid.Column="1" Grid.Row="1" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="24K ( 999.9 ) :" Grid.Column="0" Grid.Row="2" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding FnPrice}" Grid.Column="1" Grid.Row="2" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="24K (995 ) :" Grid.Column="0" Grid.Row="3" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding NfPrice}" Grid.Column="1" Grid.Row="3" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="22K :" Grid.Column="0" Grid.Row="4" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding TtPrice}" Grid.Column="1" Grid.Row="4" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="21K :" Grid.Column="0" Grid.Row="5" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding ToPrice}" Grid.Column="1" Grid.Row="5" BackgroundColor="white" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="18K :" Grid.Column="0" Grid.Row="6" BackgroundColor="white" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding EPrice}" Grid.Column="1" Grid.Row="6" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+
+                    </Grid>
+                </Border>
+                <Grid x:Name="premiumblock" IsVisible="{Binding IsVisible}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Label Text="Premium :" VerticalTextAlignment="Center"/>
+                    <Editor x:Name="premium" Grid.Column="1" VerticalTextAlignment="Center" Text="10"/>
+                    <Label Text="Dollar :" Grid.Row="1" VerticalTextAlignment="Center"/>
+                    <Editor x:Name="dollar" Grid.Column="1" Grid.Row="1" VerticalTextAlignment="Center" Text="0.305"/>
+                </Grid>
+                <Button Command="{Binding HidePremiumBlockCommand}" Text="Hide" />
+                <Label x:Name="time" Text="{Binding Time}" FontSize="{Binding ResponsiveFontSize}" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </ScrollView>
+        <Label Text="Developed by SaranKotimreddy"
+               Grid.Row="1"
+               BackgroundColor="LightGray"
+               Padding="10"
+               HorizontalTextAlignment="Center" />
+    </Grid>
+</ContentPage>
