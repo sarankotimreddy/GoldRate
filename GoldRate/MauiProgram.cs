@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System.Reflection;
+using System.Text.Json;
 
 namespace GoldRate
 {
@@ -18,7 +21,6 @@ namespace GoldRate
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
-
             return builder.Build();
         }
     }

@@ -5,13 +5,25 @@
         public App()
         {
             InitializeComponent();
+            
+                var url = Preferences.Get("URL", "");
+                if (url == "")
+                {
+                    MainPage = new NavigationPage(new SettingsPage());
+                }
+            else
+            {
+                MainPage = new AppShell();
+
+            }
+
             Current.UserAppTheme = AppTheme.Light;
             
         }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell());
-        }
+        //protected override Window CreateWindow(IActivationState? activationState)
+        //{
+        //    return new Window(new AppShell());
+        //}
     }
 }

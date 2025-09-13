@@ -9,6 +9,8 @@ namespace GoldRate
         public MainPage()
         {
             InitializeComponent();
+            var url = Preferences.Get("URL", "");
+            webview.Source = $"{url}";
             ViewModel = new MainViewModel();
             BindingContext = ViewModel;
 #if ANDROID
@@ -29,15 +31,9 @@ namespace GoldRate
 
         private void OnWebViewNavigated(object? sender, WebNavigatedEventArgs e)
         {
-            webview.Eval(@"
-    setInterval(() => {
-        const priceElements = '';
-        if (priceElements.length > 1) {
-            var price = encodeURIComponent(priceElements[1].innerText);
-            window.location.href = 'invoke://' + price;
-        }
-    }, 2000);
-");
+            var cssElement = Preferences.Get("Element", "");
+            var script = "setInterval(() => {var price = "+ cssElement +";window.location.href = 'invoke://' + price;}, 1000);";
+            webview.Eval(script);
         }
 
         private void OnWebViewNavigating(object? sender, WebNavigatingEventArgs e)
@@ -47,7 +43,16 @@ namespace GoldRate
                 e.Cancel = true;
 
                 var message = Uri.UnescapeDataString(e.Url.Replace("invoke://", "").Replace("/",""));
-                HandleMessageFromJS(message);
+                if (message == null)
+                {
+                    DisplayAlert("ERROR", "Please check url and jsElement value in settings page", "OK");
+                    webview = null;
+
+                }else
+                {
+                    HandleMessageFromJS(message);
+
+                }
             }
         }
 

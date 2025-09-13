@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Threading.Tasks;
 
 
 namespace GoldRate.Models
@@ -29,21 +30,23 @@ namespace GoldRate.Models
         {
             get
             {
-                var width = DeviceDisplay.MainDisplayInfo.Width / DeviceDisplay.MainDisplayInfo.Density;
-                return width switch
-                {
-                    < 360 => 14,
-                    < 420 => 16,
-                    < 600 => 18,
-                    < 800 => 40,
-                    _ => 80
-                };
+                Double.TryParse(Preferences.Get("FontSize", "20"), out double width);
+                return width;
             }
         }
         [RelayCommand]
         private void HidePremiumBlock()
         {
             IsVisible = !IsVisible;
+        }
+
+        [RelayCommand]
+        private async Task OpenBrowser(string url)
+        {
+            if (!string.IsNullOrEmpty(url))
+            {
+                await Launcher.Default.OpenAsync(new Uri(url));
+            }
         }
     }
 }

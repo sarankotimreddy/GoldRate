@@ -7,7 +7,7 @@
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <VerticalStackLayout>
-                <WebView x:Name="webview" Source="" IsVisible="Hidden"/>
+                <WebView x:Name="webview" IsVisible="Hidden"/>
                 <Border Stroke="Black">
                     <Grid BackgroundColor="Black" RowSpacing="1" ColumnSpacing="1">
                         <Grid.ColumnDefinitions>
@@ -58,10 +58,20 @@
                 <Label x:Name="time" Text="{Binding Time}" FontSize="{Binding ResponsiveFontSize}" HorizontalTextAlignment="Center" />
             </VerticalStackLayout>
         </ScrollView>
-        <Label Text="Developed by SaranKotimreddy"
-               Grid.Row="1"
-               BackgroundColor="LightGray"
-               Padding="10"
-               HorizontalTextAlignment="Center" />
+        <Label Grid.Row="1" BackgroundColor="LightGray" Padding="10" HorizontalTextAlignment="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Developed by " />
+                    <Span Text="SaranKotimreddy"
+                  TextColor="Blue"
+                  TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OpenBrowserCommand}"
+                                          CommandParameter="https://github.com/sarankotimreddy" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
     </Grid>
 </ContentPage>

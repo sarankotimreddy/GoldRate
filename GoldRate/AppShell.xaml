@@ -6,9 +6,11 @@
     xmlns:local="clr-namespace:GoldRate"
     Title="GoldRate">
 
-    <ShellContent
-        Title=""
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <FlyoutItem Title="Home" >
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" Route="HomePage" />
+    </FlyoutItem>
+    <FlyoutItem Title="Settings" >
+        <ShellContent ContentTemplate="{DataTemplate local:SettingsPage}" Route="SettingsPage"/>
+    </FlyoutItem>
 
 </Shell>

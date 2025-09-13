@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="GoldRate.SettingsPage">
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout Padding="20" Spacing="20" Grid.Row="0">
+
+            <Label Text="Url" FontSize="16"/>
+            <Entry x:Name="UrlEntry" Keyboard="Url" Placeholder="Enter Url" />
+
+            <Label Text="Js Value" FontSize="16"/>
+            <Entry x:Name="JsEntry" Keyboard="Text" Placeholder="Enter Javascript to get text" />
+            <Label Text="FontSize" FontSize="16"/>
+            <Entry x:Name="AppFontSize" Keyboard="Numeric" Text="20"/>
+            <Button Text="Save Settings"
+                Clicked="OnSaveClicked"
+                BackgroundColor="DarkGreen"
+                TextColor="White"/>
+        </VerticalStackLayout>
+        <Label Grid.Row="1" BackgroundColor="LightGray" Padding="10" HorizontalTextAlignment="Center">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Developed by " />
+                    <Span Text="SaranKotimreddy"
+          TextColor="Blue"
+          TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnLinkTapped"/>
+                        </Span.GestureRecognizers>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </Grid>
+</ContentPage>
