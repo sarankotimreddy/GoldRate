@@ -4,12 +4,16 @@
              x:Class="GoldRate.SettingsPage">
     <Grid RowDefinitions="*,Auto">
         <VerticalStackLayout Padding="20" Spacing="20" Grid.Row="0">
+            <Label Text="Company Name" FontSize="16"/>
+            <Entry x:Name="UserEntry" Keyboard="Url" Placeholder="Enter Company Name" />
 
             <Label Text="Url" FontSize="16"/>
             <Entry x:Name="UrlEntry" Keyboard="Url" Placeholder="Enter Url" />
 
-            <Label Text="Js Value" FontSize="16"/>
-            <Entry x:Name="JsEntry" Keyboard="Text" Placeholder="Enter Javascript to get text" />
+            <Label Text="Gold Element" FontSize="16"/>
+            <Entry x:Name="GoldEntry" Keyboard="Text" Placeholder="Enter Javascript to get text" />
+            <Label Text="Silver Element" FontSize="16"/>
+            <Entry x:Name="SilverEntry" Keyboard="Text" Placeholder="Enter Javascript to get text" />
             <Label Text="FontSize" FontSize="16"/>
             <Entry x:Name="AppFontSize" Keyboard="Numeric" Text="20"/>
             <Button Text="Save Settings"

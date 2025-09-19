@@ -5,17 +5,21 @@ public partial class SettingsPage : ContentPage
 	public SettingsPage()
 	{
 		InitializeComponent();
-		UrlEntry.Text = Preferences.Get("URL", "");
-		JsEntry.Text = Preferences.Get("Element", "");
-		AppFontSize.Text = Preferences.Get("FontSize", "20");
+		UrlEntry.Text = Preferences.Get("GoldUrl", "");
+		GoldEntry.Text = Preferences.Get("GoldElement", "");
+        SilverEntry.Text = Preferences.Get("SilverElement", "");
+        AppFontSize.Text = Preferences.Get("FontSize", "20");
+		UserEntry.Text = Preferences.Get("Company", "VERSAY JEWELLERY");
 	}
 
 	private void OnSaveClicked(object sender, EventArgs e)
 	{
-		Preferences.Set("URL", UrlEntry.Text);
-		Preferences.Set("Element", JsEntry.Text);
-		Preferences.Set("FontSize", AppFontSize.Text);
-		DisplayAlert("SUCCESS","Setting Saved Restart Application to take Effect","OK");
+		Preferences.Set("GoldUrl", UrlEntry.Text);
+		Preferences.Set("GoldElement", GoldEntry.Text);
+        Preferences.Set("SilverElement", SilverEntry.Text);
+        Preferences.Set("FontSize", AppFontSize.Text);
+		Preferences.Set("Company", UserEntry.Text);
+		Application.Current.MainPage = new AppShell();
 	}
 
     private async void OnLinkTapped(object sender, EventArgs e)

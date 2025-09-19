@@ -7,7 +7,7 @@
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <VerticalStackLayout>
-                <WebView x:Name="webview" IsVisible="Hidden"/>
+                <WebView x:Name="webview" IsVisible="False"/>
                 <Border Stroke="Black">
                     <Grid BackgroundColor="Black" RowSpacing="1" ColumnSpacing="1">
                         <Grid.ColumnDefinitions>
@@ -15,6 +15,7 @@
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
@@ -37,6 +38,8 @@
                         <Label Text="{Binding ToPrice}" Grid.Column="1" Grid.Row="5" BackgroundColor="white" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
                         <Label Text="18K :" Grid.Column="0" Grid.Row="6" BackgroundColor="white" FontSize="{Binding ResponsiveFontSize}"/>
                         <Label Text="{Binding EPrice}" Grid.Column="1" Grid.Row="6" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="Silver Onz $ :" Grid.Column="0" Grid.Row="6" BackgroundColor="white" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding SilverOnz}" Grid.Column="1" Grid.Row="6" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
 
                     </Grid>
                 </Border>
@@ -56,6 +59,85 @@
                 </Grid>
                 <Button Command="{Binding HidePremiumBlockCommand}" Text="Hide" />
                 <Label x:Name="time" Text="{Binding Time}" FontSize="{Binding ResponsiveFontSize}" HorizontalTextAlignment="Center" />
+                <Border Stroke="Black">
+                    <Grid BackgroundColor="Black" RowSpacing="1" ColumnSpacing="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Label Text="Item" Grid.Column="0" Grid.Row="0" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" FontAttributes="Bold"/>
+                        <Label Text="MC" Grid.Column="1" Grid.Row="0" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}" FontAttributes="Bold"/>
+                        <Label Text="Amount" Grid.Column="2" Grid.Row="0" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}" FontAttributes="Bold"/>
+                        <Label Text="100Gr" Grid.Column="0" Grid.Row="1" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="12" Grid.Column="1" x:Name="McH" Grid.Row="1" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding HPrice}" Grid.Column="2" Grid.Row="1" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="50Gr" Grid.Column="0" Grid.Row="2" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="11" Grid.Column="1" x:Name="McF" Grid.Row="2" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding FPrice}" Grid.Column="2" Grid.Row="2" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="31.10Gr" Grid.Column="0" Grid.Row="3" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="10" Grid.Column="1" x:Name="McOz" Grid.Row="3" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding OzPrice}" Grid.Column="2" Grid.Row="3" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="20Gr" Grid.Column="0" Grid.Row="4" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="8" Grid.Column="1" x:Name="McTw" Grid.Row="4" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding TwPrice}" Grid.Column="2" Grid.Row="4" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="10Gr" Grid.Column="0" Grid.Row="5" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="7" Grid.Column="1" x:Name="McTe" Grid.Row="5" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding TePrice}" Grid.Column="2" Grid.Row="5" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="5Gr" Grid.Column="0" Grid.Row="6" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="6" Grid.Column="1" x:Name="McFi" Grid.Row="6" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding FiPrice}" Grid.Column="2" Grid.Row="6" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="2.50Gr" Grid.Column="0" Grid.Row="7" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="5" Grid.Column="1" x:Name="McTf" Grid.Row="7" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding TfPrice}" Grid.Column="2" Grid.Row="7" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="1Gr" Grid.Column="0" Grid.Row="8" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="4" Grid.Column="1" x:Name="McO" Grid.Row="8" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding OPrice}" Grid.Column="2" Grid.Row="8" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="72Gr" Grid.Column="0" Grid.Row="9" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="14" Grid.Column="1" x:Name="McMa" Grid.Row="9" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding MaPrice}" Grid.Column="2" Grid.Row="9" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="36Gr" Grid.Column="0" Grid.Row="10" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="8" Grid.Column="1" x:Name="McMu" Grid.Row="10" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding MuPrice}" Grid.Column="2" Grid.Row="10" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="18Gr" Grid.Column="0" Grid.Row="11" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="6" Grid.Column="1" x:Name="McNm" Grid.Row="11" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding NmPrice}" Grid.Column="2" Grid.Row="11" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="8Gr" Grid.Column="0" Grid.Row="12" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="1.5" Grid.Column="1" x:Name="McG" Grid.Row="12" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding GPrice}" Grid.Column="2" Grid.Row="12" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="7.20Gr" Grid.Column="0" Grid.Row="13" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="1.5" Grid.Column="1" x:Name="McL" Grid.Row="13" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding LPrice}" Grid.Column="2" Grid.Row="13" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="3.60Gr" Grid.Column="0" Grid.Row="14" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="1.25" Grid.Column="1" x:Name="McHl" Grid.Row="14" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding HlPrice}" Grid.Column="2" Grid.Row="14" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="1.80Gr" Grid.Column="0" Grid.Row="15" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="1" Grid.Column="1" x:Name="McRl" Grid.Row="15" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding RlPrice}" Grid.Column="2" Grid.Row="15" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="0.90Gr" Grid.Column="0" Grid.Row="16" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Entry Text="1" Grid.Column="1" x:Name="McBl" Grid.Row="16" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                        <Label Text="{Binding BlPrice}" Grid.Column="2" Grid.Row="16" BackgroundColor="White" FontSize="{Binding ResponsiveFontSize}" />
+                    </Grid>
+                </Border>
             </VerticalStackLayout>
         </ScrollView>
         <Label Grid.Row="1" BackgroundColor="LightGray" Padding="10" HorizontalTextAlignment="Center">

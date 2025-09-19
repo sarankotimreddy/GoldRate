@@ -6,7 +6,7 @@
         {
             InitializeComponent();
             
-                var url = Preferences.Get("URL", "");
+                var url = Preferences.Get("GoldUrl", "");
                 if (url == "")
                 {
                     MainPage = new NavigationPage(new SettingsPage());

@@ -24,7 +24,7 @@
 		<ApplicationTitle>GoldRate</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.goldrate</ApplicationId>
+		<ApplicationId>com.sarankotimreddy.goldrate</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
