@@ -7,7 +7,7 @@
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <VerticalStackLayout>
-                <WebView x:Name="webview" IsVisible="False"/>
+                <WebView x:Name="webview" IsVisible="True" HeightRequest="1"/>
                 <Border Stroke="Black">
                     <Grid BackgroundColor="Black" RowSpacing="1" ColumnSpacing="1">
                         <Grid.ColumnDefinitions>
@@ -38,8 +38,8 @@
                         <Label Text="{Binding ToPrice}" Grid.Column="1" Grid.Row="5" BackgroundColor="white" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
                         <Label Text="18K :" Grid.Column="0" Grid.Row="6" BackgroundColor="white" FontSize="{Binding ResponsiveFontSize}"/>
                         <Label Text="{Binding EPrice}" Grid.Column="1" Grid.Row="6" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
-                        <Label Text="Silver Onz $ :" Grid.Column="0" Grid.Row="6" BackgroundColor="white" FontSize="{Binding ResponsiveFontSize}"/>
-                        <Label Text="{Binding SilverOnz}" Grid.Column="1" Grid.Row="6" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="Silver Onz $ :" Grid.Column="0" Grid.Row="7" BackgroundColor="white" FontSize="{Binding ResponsiveFontSize}"/>
+                        <Label Text="{Binding SilverOnz}" Grid.Column="1" Grid.Row="7" BackgroundColor="White" HorizontalTextAlignment="Center" FontSize="{Binding ResponsiveFontSize}"/>
 
                     </Grid>
                 </Border>
