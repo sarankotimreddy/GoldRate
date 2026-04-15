@@ -1,4 +1,4 @@
-name: Build .NET MAUI (Android, iOS, Windows)
+name: Build .NET MAUI (.NET 9)
 
 on:
   push:
@@ -9,96 +9,86 @@ on:
 jobs:
 
   build-android:
-    name: Android Build
+    name: Android
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup .NET
+      - name: Setup .NET 9
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
-      - name: Install MAUI workload
-        run: dotnet workload install maui
+      - name: Restore workload
+        run: dotnet workload restore
 
-      - name: Restore
+      - name: Restore project
         run: dotnet restore
 
       - name: Build Android
-        run: dotnet build -f net8.0-android -c Release
+        run: dotnet build -f net9.0-android -c Release
 
-      - name: Publish Android APK
-        run: dotnet publish -f net8.0-android -c Release -o publish
+      - name: Publish Android
+        run: dotnet publish -f net9.0-android -c Release -o publish
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: android-build
           path: publish/
 
   build-ios:
-    name: iOS Build
+    name: iOS
     runs-on: macos-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup .NET
+      - name: Setup .NET 9
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
-      - name: Install MAUI workload
-        run: dotnet workload install maui
+      - name: Restore workload
+        run: dotnet workload restore
 
-      - name: Restore
+      - name: Restore project
         run: dotnet restore
 
       - name: Build iOS
-        run: dotnet build -f net8.0-ios -c Release
+        run: dotnet build -f net9.0-ios -c Release
 
-      # Optional: publish (requires signing configured)
-      # - name: Publish iOS
-      #   run: dotnet publish -f net8.0-ios -c Release -o publish
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: ios-build
           path: |
-            **/bin/Release/net8.0-ios/
+            **/bin/Release/net9.0-ios/
 
   build-windows:
-    name: Windows Build
+    name: Windows
     runs-on: windows-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup .NET
+      - name: Setup .NET 9
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 9.0.x
 
-      - name: Install MAUI workload
-        run: dotnet workload install maui
+      - name: Restore workload
+        run: dotnet workload restore
 
-      - name: Restore
+      - name: Restore project
         run: dotnet restore
 
       - name: Build Windows
-        run: dotnet build -f net8.0-windows10.0.19041.0 -c Release
+        run: dotnet build -f net9.0-windows10.0.19041.0 -c Release
 
       - name: Publish Windows
-        run: dotnet publish -f net8.0-windows10.0.19041.0 -c Release -o publish
+        run: dotnet publish -f net9.0-windows10.0.19041.0 -c Release -o publish
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: windows-build
           path: publish/
