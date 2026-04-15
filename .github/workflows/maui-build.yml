@@ -1,0 +1,104 @@
+name: Build .NET MAUI (Android, iOS, Windows)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build-android:
+    name: Android Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build Android
+        run: dotnet build -f net8.0-android -c Release
+
+      - name: Publish Android APK
+        run: dotnet publish -f net8.0-android -c Release -o publish
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build
+          path: publish/
+
+  build-ios:
+    name: iOS Build
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build iOS
+        run: dotnet build -f net8.0-ios -c Release
+
+      # Optional: publish (requires signing configured)
+      # - name: Publish iOS
+      #   run: dotnet publish -f net8.0-ios -c Release -o publish
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-build
+          path: |
+            **/bin/Release/net8.0-ios/
+
+  build-windows:
+    name: Windows Build
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui
+
+      - name: Restore
+        run: dotnet restore
+
+      - name: Build Windows
+        run: dotnet build -f net8.0-windows10.0.19041.0 -c Release
+
+      - name: Publish Windows
+        run: dotnet publish -f net8.0-windows10.0.19041.0 -c Release -o publish
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: publish/
