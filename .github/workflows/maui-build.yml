@@ -19,10 +19,10 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Install Android workload
-        run: dotnet workload install maui-android   # ← install only android, not all maui
+        run: dotnet workload install maui-android
 
       - name: Restore project
-        run: dotnet restore -f net9.0-android       # ← scope to android only
+        run: dotnet restore /p:TargetFrameworks=net9.0-android
 
       - name: Build Android
         run: |
@@ -43,7 +43,7 @@ jobs:
 
   build-ios:
     name: iOS
-    runs-on: macos-15          # ← was macos-14 (Xcode 15.x), needs macos-15 (Xcode 16.x)
+    runs-on: macos-15
     steps:
       - uses: actions/checkout@v4
 
@@ -55,11 +55,11 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
-      - name: Restore workload
-        run: dotnet workload restore
+      - name: Install iOS workload
+        run: dotnet workload install maui-ios
 
       - name: Restore project
-        run: dotnet restore
+        run: dotnet restore /p:TargetFrameworks=net9.0-ios
 
       - name: Build iOS
         run: |
@@ -85,11 +85,11 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
-      - name: Restore workload
-        run: dotnet workload restore
+      - name: Install Windows workload
+        run: dotnet workload install maui-windows
 
       - name: Restore project
-        run: dotnet restore
+        run: dotnet restore /p:TargetFrameworks=net9.0-windows10.0.19041.0
 
       - name: Build Windows
         run: dotnet build -f net9.0-windows10.0.19041.0 -c Release /p:WindowsPackageType=None
