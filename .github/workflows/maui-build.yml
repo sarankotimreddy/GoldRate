@@ -22,7 +22,7 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Install iOS workload
-        run: dotnet workload install maui-ios
+        run: dotnet workload install maui-ios maui-android
 
       - name: Restore project
         run: |
