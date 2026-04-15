@@ -18,11 +18,11 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
-      - name: Restore workload
-        run: dotnet workload restore
+      - name: Install Android workload
+        run: dotnet workload install maui-android   # ← install only android, not all maui
 
       - name: Restore project
-        run: dotnet restore
+        run: dotnet restore -f net9.0-android       # ← scope to android only
 
       - name: Build Android
         run: |
