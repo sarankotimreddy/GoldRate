@@ -7,43 +7,6 @@ on:
     branches: [ main ]
 
 jobs:
-  build-android:
-    name: Android
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup .NET 9
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9.0.x
-
-      - name: Install Android workload
-        run: dotnet workload install maui-android
-
-      - name: Restore project
-        run: |
-          dotnet restore \
-            /p:TargetFrameworks=net9.0-android \
-            /p:ExcludeMauiMacCatalyst=true
-
-      - name: Build Android
-        run: |
-          dotnet build -f net9.0-android -c Release \
-            /p:AndroidSigningKeyPass="" \
-            /p:AndroidSigningStorePass=""
-
-      - name: Publish Android
-        run: |
-          dotnet publish -f net9.0-android -c Release -o publish \
-            /p:AndroidSigningKeyPass="" \
-            /p:AndroidSigningStorePass=""
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: android-build
-          path: publish/
-
   build-ios:
     name: iOS
     runs-on: macos-15
@@ -79,35 +42,3 @@ jobs:
         with:
           name: ios-build
           path: "**/bin/Release/net9.0-ios/"
-
-  build-windows:
-    name: Windows
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup .NET 9
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 9.0.x
-
-      - name: Install Windows workload
-        run: dotnet workload install maui-windows
-
-      - name: Restore project
-        run: dotnet restore /p:TargetFrameworks=net9.0-windows10.0.19041.0
-
-      - name: Build Windows
-        run: |
-          dotnet build -f net9.0-windows10.0.19041.0 -c Release \
-            /p:WindowsPackageType=None
-
-      - name: Publish Windows
-        run: |
-          dotnet publish -f net9.0-windows10.0.19041.0 -c Release -o publish \
-            /p:WindowsPackageType=None
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: windows-build
-          path: publish/
